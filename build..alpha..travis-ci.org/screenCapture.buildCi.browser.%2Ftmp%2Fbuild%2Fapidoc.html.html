@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/evcohen/eslint-plugin-jsx-a11y#readme"
-
-    >eslint-plugin-jsx-a11y (v4.0.0)</a>
+    <a href="https://github.com/evcohen/eslint-plugin-jsx-a11y#readme">eslint-plugin-jsx-a11y (v4.0.0)</a>
 </h1>
 <h4>Static AST checker for accessibility rules on JSX elements.</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.eslint-plugin-jsx-a11y">module eslint-plugin-jsx-a11y</a><ol>
 
@@ -1079,17 +1072,17 @@
   return {
     JSXOpeningElement: function JSXOpeningElement(node) {
       var literalChildValue = node.parent.children.find(function (child) {
-        return child.type === &#x27;Literal&#x27;;
+        return child.type === 'Literal';
       });
 
-      if (literalChildValue &#x26;&#x26; (0, _emojiRegex2.default)().test(literalChildValue.value)) {
-        var rolePropValue = (0, _jsxAstUtils.getLiteralPropValue)((0, _jsxAstUtils.getProp)(node.attributes, &#x27;role&#x27;));
-        var ariaLabelProp = (0, _jsxAstUtils.getProp)(node.attributes, &#x27;aria-label&#x27;);
-        var arialLabelledByProp = (0, _jsxAstUtils.getProp)(node.attributes, &#x27;aria-labelledby&#x27;);
+      if (literalChildValue &amp;&amp; (0, _emojiRegex2.default)().test(literalChildValue.value)) {
+        var rolePropValue = (0, _jsxAstUtils.getLiteralPropValue)((0, _jsxAstUtils.getProp)(node.attributes, 'role'));
+        var ariaLabelProp = (0, _jsxAstUtils.getProp)(node.attributes, 'aria-label');
+        var arialLabelledByProp = (0, _jsxAstUtils.getProp)(node.attributes, 'aria-labelledby');
         var hasLabel = ariaLabelProp !== undefined || arialLabelledByProp !== undefined;
-        var isSpan = (0, _jsxAstUtils.elementType)(node) === &#x27;span&#x27;;
+        var isSpan = (0, _jsxAstUtils.elementType)(node) === 'span';
 
-        if (hasLabel === false || rolePropValue !== &#x27;img&#x27; || isSpan === false) {
+        if (hasLabel === false || rolePropValue !== 'img' || isSpan === false) {
           context.report({
             node: node,
             message: errorMessage
@@ -1123,15 +1116,15 @@
     JSXOpeningElement: function JSXOpeningElement(node) {
       var options = context.options[0] || {};
       var componentOptions = options.components || [];
-      var typeCheck = [&#x27;a&#x27;].concat(componentOptions);
+      var typeCheck = ['a'].concat(componentOptions);
       var nodeType = (0, _jsxAstUtils.elementType)(node);
 
       // Only check anchor elements and custom types.
       if (typeCheck.indexOf(nodeType) === -1) {
         return;
       }
-      var isAccessible = node.parent.children.some(determineChildType) || (0, _jsxAstUtils.hasAnyProp)(node.attributes, [&#x27;dangerouslySetInnerHTML
-&#x27;, &#x27;children&#x27;]);
+      var isAccessible = node.parent.children.some(determineChildType) || (0, _jsxAstUtils.hasAnyProp)(node.attributes, ['dangerouslySetInnerHTML
+', 'children']);
 
       if (isAccessible) {
         return;
@@ -1158,14 +1151,14 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function determineChildType(child) {
   switch (child.type) {
-    case &#x27;Literal&#x27;:
+    case 'Literal':
       return Boolean(child.value);
-    case &#x27;JSXElement&#x27;:
+    case 'JSXElement':
       return !(0, _isHiddenFromScreenReader2.default)((0, _jsxAstUtils.elementType)(child.openingElement), child.openingElement.
 attributes);
-    case &#x27;JSXExpressionContainer&#x27;:
-      if (child.expression.type === &#x27;Identifier&#x27;) {
-        return child.expression.name !== &#x27;undefined&#x27;;
+    case 'JSXExpressionContainer':
+      if (child.expression.type === 'Identifier') {
+        return child.expression.name !== 'undefined';
       }
       return true;
     default:
@@ -1197,7 +1190,7 @@ attributes);
       var attributes = node.attributes;
 
 
-      if ((0, _jsxAstUtils.getProp)(attributes, &#x27;aria-activedescendant&#x27;) === undefined) {
+      if ((0, _jsxAstUtils.getProp)(attributes, 'aria-activedescendant') === undefined) {
         return;
       }
 
@@ -1207,17 +1200,17 @@ attributes);
       if (domElements.indexOf(type) === -1) {
         return;
       }
-      var tabIndex = (0, _getTabIndex2.default)((0, _jsxAstUtils.getProp)(attributes, &#x27;tabIndex&#x27;));
+      var tabIndex = (0, _getTabIndex2.default)((0, _jsxAstUtils.getProp)(attributes, 'tabIndex'));
 
       // If this is an interactive element, tabIndex must be either left
       // unspecified allowing the inherent tabIndex to obtain or it must be
       // zero (allowing for positive, even though that is not ideal). It cannot
       // be given a negative value.
-      if ((0, _isInteractiveElement2.default)(type, attributes) &#x26;&#x26; (tabIndex === undefined || tabIndex &#x3e;= 0)) {
+      if ((0, _isInteractiveElement2.default)(type, attributes) &amp;&amp; (tabIndex === undefined || tabIndex &gt;= 0)) {
         return;
       }
 
-      if (tabIndex &#x3e;= 0) {
+      if (tabIndex &gt;= 0) {
         return;
       }
 
@@ -1251,14 +1244,14 @@ attributes);
   return {
     JSXAttribute: function JSXAttribute(attribute) {
       var name = (0, _jsxAstUtils.propName)(attribute);
-      var normalizedName = name ? name.toLowerCase() : &#x27;&#x27;;
+      var normalizedName = name ? name.toLowerCase() : '';
 
       // `aria` needs to be prefix of property.
-      if (normalizedName.indexOf(&#x27;aria-&#x27;) !== 0) {
+      if (normalizedName.indexOf('aria-') !== 0) {
         return;
       }
 
-      var isValid = ariaAttributes.indexOf(normalizedName) &#x3e; -1;
+      var isValid = ariaAttributes.indexOf(normalizedName) &gt; -1;
 
       if (isValid === false) {
         context.report({
@@ -1292,16 +1285,16 @@ attributes);
   return {
     JSXAttribute: function JSXAttribute(attribute) {
       var name = (0, _jsxAstUtils.propName)(attribute);
-      var normalizedName = name ? name.toLowerCase() : &#x27;&#x27;;
+      var normalizedName = name ? name.toLowerCase() : '';
 
       // Not a valid aria-* state or property.
-      if (normalizedName.indexOf(&#x27;aria-&#x27;) !== 0 || _ariaQuery.aria.get(normalizedName) === undefined) {
+      if (normalizedName.indexOf('aria-') !== 0 || _ariaQuery.aria.get(normalizedName) === undefined) {
         return;
       }
 
       var value = (0, _jsxAstUtils.getLiteralPropValue)(attribute);
 
-      // We only want to check literal prop values, so just pass if it&#x27;s null.
+      // We only want to check literal prop values, so just pass if it's null.
       if (value === null) {
         return;
       }
@@ -1312,7 +1305,7 @@ attributes);
       var allowUndefined = attributes.allowUndefined || false;
       var permittedValues = attributes.values || [];
 
-      var isValid = validityCheck(value, permittedType, permittedValues) || allowUndefined &#x26;&#x26; value === undefined;
+      var isValid = validityCheck(value, permittedType, permittedValues) || allowUndefined &amp;&amp; value === undefined;
 
       if (isValid) {
         return;
@@ -1339,21 +1332,21 @@ attributes);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function validityCheck(value, expectedType, permittedValues) {
   switch (expectedType) {
-    case &#x27;boolean&#x27;:
-      return typeof value === &#x27;boolean&#x27;;
-    case &#x27;string&#x27;:
-      return typeof value === &#x27;string&#x27;;
-    case &#x27;tristate&#x27;:
-      return typeof value === &#x27;boolean&#x27; || value === &#x27;mixed&#x27;;
-    case &#x27;integer&#x27;:
-    case &#x27;number&#x27;:
-      // Booleans resolve to 0/1 values so hard check that it&#x27;s not first.
-      return typeof value !== &#x27;boolean&#x27; &#x26;&#x26; isNaN(Number(value)) === false;
-    case &#x27;token&#x27;:
-      return permittedValues.indexOf(typeof value === &#x27;string&#x27; ? value.toLowerCase() : value) &#x3e; -1;
-    case &#x27;tokenlist&#x27;:
-      return typeof value === &#x27;string&#x27; &#x26;&#x26; value.split(&#x27; &#x27;).every(function (token) {
-        return permittedValues.indexOf(token.toLowerCase()) &#x3e; -1;
+    case 'boolean':
+      return typeof value === 'boolean';
+    case 'string':
+      return typeof value === 'string';
+    case 'tristate':
+      return typeof value === 'boolean' || value === 'mixed';
+    case 'integer':
+    case 'number':
+      // Booleans resolve to 0/1 values so hard check that it's not first.
+      return typeof value !== 'boolean' &amp;&amp; isNaN(Number(value)) === false;
+    case 'token':
+      return permittedValues.indexOf(typeof value === 'string' ? value.toLowerCase() : value) &gt; -1;
+    case 'tokenlist':
+      return typeof value === 'string' &amp;&amp; value.split(' ').every(function (token) {
+        return permittedValues.indexOf(token.toLowerCase()) &gt; -1;
       });
     default:
       return false;
@@ -1395,9 +1388,9 @@ attributes);
 
       // Get prop name
       var name = (0, _jsxAstUtils.propName)(attribute);
-      var normalizedName = name ? name.toUpperCase() : &#x27;&#x27;;
+      var normalizedName = name ? name.toUpperCase() : '';
 
-      if (normalizedName !== &#x27;ROLE&#x27;) {
+      if (normalizedName !== 'ROLE') {
         return;
       }
 
@@ -1405,17 +1398,17 @@ attributes);
 
       // If value is undefined, then the role attribute will be dropped in the DOM.
       // If value is null, then getLiteralAttributeValue is telling us that the
-      // value isn&#x27;t in the form of a literal.
+      // value isn't in the form of a literal.
       if (value === undefined || value === null) {
         return;
       }
 
-      var normalizedValues = String(value).toLowerCase().split(&#x27; &#x27;);
+      var normalizedValues = String(value).toLowerCase().split(' ');
       var validRoles = [].concat(_toConsumableArray(_ariaQuery.roles.keys())).filter(function (role) {
         return _ariaQuery.roles.get(role).abstract === false;
       });
       var isValid = normalizedValues.every(function (val) {
-        return validRoles.indexOf(val) &#x3e; -1;
+        return validRoles.indexOf(val) &gt; -1;
       });
 
       if (isValid === true) {
@@ -1456,23 +1449,23 @@ attributes);
       var _nodeAttrs$reserved = nodeAttrs.reserved,
           isReservedNodeType = _nodeAttrs$reserved === undefined ? false : _nodeAttrs$reserved;
 
-      // If it&#x27;s not reserved, then it can have aria-* roles, states, and properties
+      // If it's not reserved, then it can have aria-* roles, states, and properties
 
       if (isReservedNodeType === false) {
         return;
       }
 
-      var invalidAttributes = [].concat(_toConsumableArray(_ariaQuery.aria.keys())).concat(&#x27;role&#x27;);
+      var invalidAttributes = [].concat(_toConsumableArray(_ariaQuery.aria.keys())).concat('role');
 
       node.attributes.forEach(function (prop) {
-        if (prop.type === &#x27;JSXSpreadAttribute&#x27;) {
+        if (prop.type === 'JSXSpreadAttribute') {
           return;
         }
 
         var name = (0, _jsxAstUtils.propName)(prop);
-        var normalizedName = name ? name.toLowerCase() : &#x27;&#x27;;
+        var normalizedName = name ? name.toLowerCase() : '';
 
-        if (invalidAttributes.indexOf(normalizedName) &#x3e; -1) {
+        if (invalidAttributes.indexOf(normalizedName) &gt; -1) {
           context.report({
             node: node,
             message: errorMessage(name)
@@ -1505,12 +1498,12 @@ attributes);
   return {
     JSXOpeningElement: function JSXOpeningElement(node) {
       var props = node.attributes;
-      if ((0, _jsxAstUtils.getProp)(props, &#x27;onclick&#x27;) === undefined) {
+      if ((0, _jsxAstUtils.getProp)(props, 'onclick') === undefined) {
         return;
       }
 
       var type = (0, _jsxAstUtils.elementType)(node);
-      var requiredProps = [&#x27;onkeydown&#x27;, &#x27;onkeyup&#x27;, &#x27;onkeypress&#x27;];
+      var requiredProps = ['onkeydown', 'onkeyup', 'onkeypress'];
 
       if ((0, _isHiddenFromScreenReader2.default)(type, props)) {
         return;
@@ -1554,7 +1547,7 @@ attributes);
     return _implicitRoles2.default[normalizedType](attributes);
   }
 
-  return &#x27;&#x27;;
+  return '';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1574,8 +1567,8 @@ attributes);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function getSuggestion(word) {
-  var dictionary = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : [];
-  var limit = arguments.length &#x3e; 2 &#x26;&#x26; arguments[2] !== undefined ? arguments[2] : 2;
+  var dictionary = arguments.length &gt; 1 &amp;&amp; arguments[1] !== undefined ? arguments[1] : [];
+  var limit = arguments.length &gt; 2 &amp;&amp; arguments[2] !== undefined ? arguments[2] : 2;
 
   var distances = dictionary.reduce(function (suggestions, dictionaryWord) {
     var distance = (0, _damerauLevenshtein2.default)(word.toUpperCase(), dictionaryWord.toUpperCase());
@@ -1586,7 +1579,7 @@ attributes);
   }, {});
 
   return Object.keys(distances).filter(function (suggestion) {
-    return distances[suggestion] &#x3c;= THRESHOLD;
+    return distances[suggestion] &lt;= THRESHOLD;
   }).sort(function (a, b) {
     return distances[a] - distances[b];
   }) // Sort by distance
@@ -1613,9 +1606,9 @@ attributes);
   var literalValue = (0, _jsxAstUtils.getLiteralPropValue)(tabIndex);
 
   // String and number values.
-  if ([&#x27;string&#x27;, &#x27;number&#x27;].indexOf(typeof literalValue === &#x27;undefined&#x27; ? &#x27;undefined&#x27; : _typeof(literalValue)) &#x3e; -1) {
+  if (['string', 'number'].indexOf(typeof literalValue === 'undefined' ? 'undefined' : _typeof(literalValue)) &gt; -1) {
     // Empty string will convert to zero, so check for it explicity.
-    if (typeof literalValue === &#x27;string&#x27; &#x26;&#x26; literalValue.length === 0) {
+    if (typeof literalValue === 'string' &amp;&amp; literalValue.length === 0) {
       return undefined;
     }
     var value = Number(literalValue);
@@ -1656,13 +1649,13 @@ attributes);
       var typeCheck = headings.concat(context.options[0]);
       var nodeType = (0, _jsxAstUtils.elementType)(node);
 
-      // Only check &#x27;h*&#x27; elements and custom types.
+      // Only check 'h*' elements and custom types.
       if (typeCheck.indexOf(nodeType) === -1) {
         return;
       }
 
-      var isAccessible = node.parent.children.some(determineChildType) || (0, _jsxAstUtils.hasAnyProp)(node.attributes, [&#x27;dangerouslySetInnerHTML
-&#x27;, &#x27;children&#x27;]);
+      var isAccessible = node.parent.children.some(determineChildType) || (0, _jsxAstUtils.hasAnyProp)(node.attributes, ['dangerouslySetInnerHTML
+', 'children']);
 
       if (isAccessible) {
         return;
@@ -1689,14 +1682,14 @@ attributes);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function determineChildType(child) {
   switch (child.type) {
-    case &#x27;Literal&#x27;:
+    case 'Literal':
       return Boolean(child.value);
-    case &#x27;JSXElement&#x27;:
+    case 'JSXElement':
       return !(0, _isHiddenFromScreenReader2.default)((0, _jsxAstUtils.elementType)(child.openingElement), child.openingElement.
 attributes);
-    case &#x27;JSXExpressionContainer&#x27;:
-      if (child.expression.type === &#x27;Identifier&#x27;) {
-        return child.expression.name !== &#x27;undefined&#x27;;
+    case 'JSXExpressionContainer':
+      if (child.expression.type === 'Identifier') {
+        return child.expression.name !== 'undefined';
       }
       return true;
     default:
@@ -1727,16 +1720,16 @@ attributes);
     JSXOpeningElement: function JSXOpeningElement(node) {
       var options = context.options[0] || {};
       var componentOptions = options.components || [];
-      var typesToValidate = [&#x27;a&#x27;].concat(componentOptions);
+      var typesToValidate = ['a'].concat(componentOptions);
       var nodeType = (0, _jsxAstUtils.elementType)(node);
 
-      // Only check &#x27;a&#x27; elements and custom types.
+      // Only check 'a' elements and custom types.
       if (typesToValidate.indexOf(nodeType) === -1) {
         return;
       }
 
       var propOptions = options.specialLink || [];
-      var propsToValidate = [&#x27;href&#x27;].concat(propOptions);
+      var propsToValidate = ['href'].concat(propOptions);
       var values = propsToValidate.map(function (prop) {
         return (0, _jsxAstUtils.getProp)(node.attributes, prop);
       }).map(function (prop) {
@@ -1744,7 +1737,7 @@ attributes);
       });
 
       values.forEach(function (value) {
-        if (value === &#x27;#&#x27;) {
+        if (value === '#') {
           context.report({
             node: node,
             message: errorMessage
@@ -1778,11 +1771,11 @@ attributes);
     JSXOpeningElement: function JSXOpeningElement(node) {
       var type = (0, _jsxAstUtils.elementType)(node);
 
-      if (type &#x26;&#x26; type !== &#x27;html&#x27;) {
+      if (type &amp;&amp; type !== 'html') {
         return;
       }
 
-      var lang = (0, _jsxAstUtils.getPropValue)((0, _jsxAstUtils.getProp)(node.attributes, &#x27;lang&#x27;));
+      var lang = (0, _jsxAstUtils.getPropValue)((0, _jsxAstUtils.getProp)(node.attributes, 'lang'));
 
       if (lang) {
         return;
@@ -1819,13 +1812,13 @@ attributes);
     JSXOpeningElement: function JSXOpeningElement(node) {
       var type = (0, _jsxAstUtils.elementType)(node);
 
-      if (type &#x26;&#x26; type !== &#x27;iframe&#x27;) {
+      if (type &amp;&amp; type !== 'iframe') {
         return;
       }
 
-      var title = (0, _jsxAstUtils.getPropValue)((0, _jsxAstUtils.getProp)(node.attributes, &#x27;title&#x27;));
+      var title = (0, _jsxAstUtils.getPropValue)((0, _jsxAstUtils.getProp)(node.attributes, 'title'));
 
-      if (title &#x26;&#x26; typeof title === &#x27;string&#x27;) {
+      if (title &amp;&amp; typeof title === 'string') {
         return;
       }
 
@@ -1860,50 +1853,50 @@ attributes);
     JSXOpeningElement: function JSXOpeningElement(node) {
       var options = context.options[0] || {};
       var componentOptions = options.components || [];
-      var typesToValidate = [&#x27;img&#x27;].concat(componentOptions);
+      var typesToValidate = ['img'].concat(componentOptions);
       var nodeType = (0, _jsxAstUtils.elementType)(node);
 
-      // Only check &#x27;img&#x27; elements and custom types.
+      // Only check 'img' elements and custom types.
       if (typesToValidate.indexOf(nodeType) === -1) {
         return;
       }
 
-      var roleProp = (0, _jsxAstUtils.getProp)(node.attributes, &#x27;role&#x27;);
+      var roleProp = (0, _jsxAstUtils.getProp)(node.attributes, 'role');
       var roleValue = (0, _jsxAstUtils.getPropValue)(roleProp);
-      var isPresentation = roleProp &#x26;&#x26; typeof roleValue === &#x27;string&#x27; &#x26;&#x26; roleValue.toLowerCase() === &#x27;presentation&#x27;;
+      var isPresentation = roleProp &amp;&amp; typeof roleValue === 'string' &amp;&amp; roleValue.toLowerCase() === 'presentation';
 
-      var altProp = (0, _jsxAstUtils.getProp)(node.attributes, &#x27;alt&#x27;);
+      var altProp = (0, _jsxAstUtils.getProp)(node.attributes, 'alt');
 
       // Missing alt prop error.
       if (altProp === undefined) {
         if (isPresentation) {
           context.report({
             node: node,
-            message: &#x27;Prefer alt=&#x22;&#x22; over role=&#x22;presentation&#x22;. First rule of aria is to not use aria if it can be achieved via native
- HTML.&#x27;
+            message: 'Prefer alt="" over role="presentation". First rule of aria is to not use aria if it can be achieved via native
+ HTML.'
           });
           return;
         }
         context.report({
           node: node,
-          message: nodeType + &#x27; elements must have an alt prop, either with meaningful text, or an empty string for decorative images
-.&#x27;
+          message: nodeType + ' elements must have an alt prop, either with meaningful text, or an empty string for decorative images
+.'
         });
         return;
       }
 
       // Check if alt prop is undefined.
       var altValue = (0, _jsxAstUtils.getPropValue)(altProp);
-      var isNullValued = altProp.value === null; // &#x3c;img alt /&#x3e;
+      var isNullValued = altProp.value === null; // &lt;img alt /&gt;
 
-      if (altValue &#x26;&#x26; !isNullValued || altValue === &#x27;&#x27;) {
+      if (altValue &amp;&amp; !isNullValued || altValue === '') {
         return;
       }
 
       // Undefined alt prop error.
       context.report({
         node: node,
-        message: &#x27;Invalid alt value for &#x27; + nodeType + &#x27;. Use alt=&#x22;&#x22; for presentational images.&#x27;
+        message: 'Invalid alt value for ' + nodeType + '. Use alt="" for presentational images.'
       });
     }
   };
@@ -1932,15 +1925,15 @@ attributes);
     JSXOpeningElement: function JSXOpeningElement(node) {
       var options = context.options[0] || {};
       var componentOptions = options.components || [];
-      var typesToValidate = [&#x27;img&#x27;].concat(componentOptions);
+      var typesToValidate = ['img'].concat(componentOptions);
       var nodeType = (0, _jsxAstUtils.elementType)(node);
 
-      // Only check &#x27;label&#x27; elements and custom types.
+      // Only check 'label' elements and custom types.
       if (typesToValidate.indexOf(nodeType) === -1) {
         return;
       }
 
-      var altProp = (0, _jsxAstUtils.getProp)(node.attributes, &#x27;alt&#x27;);
+      var altProp = (0, _jsxAstUtils.getProp)(node.attributes, 'alt');
       // Return if alt prop is not present.
       if (altProp === undefined) {
         return;
@@ -1954,9 +1947,9 @@ attributes);
 
       var redundantWords = REDUNDANT_WORDS.concat(words);
 
-      if (typeof value === &#x27;string&#x27; &#x26;&#x26; isVisible) {
+      if (typeof value === 'string' &amp;&amp; isVisible) {
         var hasRedundancy = redundantWords.some(function (word) {
-          return Boolean(value.match(new RegExp(&#x27;(?!{)\\b&#x27; + word + &#x27;\\b(?!})&#x27;, &#x27;i&#x27;)));
+          return Boolean(value.match(new RegExp('(?!{)\\b' + word + '\\b(?!})', 'i')));
         });
 
         if (hasRedundancy === true) {
@@ -1989,15 +1982,15 @@ attributes);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function isHiddenFromScreenReader(type, attributes) {
-  if (type.toUpperCase() === &#x27;INPUT&#x27;) {
-    var hidden = (0, _jsxAstUtils.getLiteralPropValue)((0, _jsxAstUtils.getProp)(attributes, &#x27;type&#x27;));
+  if (type.toUpperCase() === 'INPUT') {
+    var hidden = (0, _jsxAstUtils.getLiteralPropValue)((0, _jsxAstUtils.getProp)(attributes, 'type'));
 
-    if (hidden &#x26;&#x26; hidden.toUpperCase() === &#x27;HIDDEN&#x27;) {
+    if (hidden &amp;&amp; hidden.toUpperCase() === 'HIDDEN') {
       return true;
     }
   }
 
-  var ariaHidden = (0, _jsxAstUtils.getPropValue)((0, _jsxAstUtils.getProp)(attributes, &#x27;aria-hidden&#x27;));
+  var ariaHidden = (0, _jsxAstUtils.getPropValue)((0, _jsxAstUtils.getProp)(attributes, 'aria-hidden'));
   return ariaHidden === true;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -2056,18 +2049,18 @@ attributes);
     return true;
   }
 
-  var value = (0, _jsxAstUtils.getLiteralPropValue)((0, _jsxAstUtils.getProp)(attributes, &#x27;role&#x27;));
+  var value = (0, _jsxAstUtils.getLiteralPropValue)((0, _jsxAstUtils.getProp)(attributes, 'role'));
 
   // If value is undefined, then the role attribute will be dropped in the DOM.
   // If value is null, then getLiteralAttributeValue is telling us that the
-  // value isn&#x27;t in the form of a literal
+  // value isn't in the form of a literal
   if (value === undefined || value === null) {
     return false;
   }
 
-  var normalizedValues = String(value).toLowerCase().split(&#x27; &#x27;);
+  var normalizedValues = String(value).toLowerCase().split(' ');
   var isInteractive = normalizedValues.every(function (val) {
-    return VALID_ROLES.indexOf(val) &#x3e; -1;
+    return VALID_ROLES.indexOf(val) &gt; -1;
   });
 
   return isInteractive;
@@ -2094,15 +2087,15 @@ attributes);
     JSXOpeningElement: function JSXOpeningElement(node) {
       var options = context.options[0] || {};
       var componentOptions = options.components || [];
-      var typesToValidate = [&#x27;label&#x27;].concat(componentOptions);
+      var typesToValidate = ['label'].concat(componentOptions);
       var nodeType = (0, _jsxAstUtils.elementType)(node);
 
-      // Only check &#x27;label&#x27; elements and custom types.
+      // Only check 'label' elements and custom types.
       if (typesToValidate.indexOf(nodeType) === -1) {
         return;
       }
 
-      var htmlForAttr = (0, _jsxAstUtils.getProp)(node.attributes, &#x27;htmlFor&#x27;);
+      var htmlForAttr = (0, _jsxAstUtils.getProp)(node.attributes, 'htmlFor');
       var htmlForValue = (0, _jsxAstUtils.getPropValue)(htmlForAttr);
       var isInvalid = htmlForAttr === false || !htmlForValue;
 
@@ -2138,20 +2131,20 @@ attributes);
   return {
     JSXAttribute: function JSXAttribute(node) {
       var name = (0, _jsxAstUtils.propName)(node);
-      if (name &#x26;&#x26; name.toUpperCase() !== &#x27;LANG&#x27;) {
+      if (name &amp;&amp; name.toUpperCase() !== 'LANG') {
         return;
       }
 
       var parent = node.parent;
 
       var type = (0, _jsxAstUtils.elementType)(parent);
-      if (type &#x26;&#x26; type !== &#x27;html&#x27;) {
+      if (type &amp;&amp; type !== 'html') {
         return;
       }
 
       var value = (0, _jsxAstUtils.getLiteralPropValue)(node);
 
-      // Don&#x27;t check identifiers
+      // Don't check identifiers
       if (value === null) {
         return;
       } else if (value === undefined) {
@@ -2163,11 +2156,11 @@ attributes);
         return;
       }
 
-      var hyphen = value.indexOf(&#x27;-&#x27;);
-      var lang = hyphen &#x3e; -1 ? value.substring(0, hyphen) : value;
-      var country = hyphen &#x3e; -1 ? value.substring(3) : undefined;
+      var hyphen = value.indexOf('-');
+      var lang = hyphen &gt; -1 ? value.substring(0, hyphen) : value;
+      var country = hyphen &gt; -1 ? value.substring(3) : undefined;
 
-      if (_ISO2.default.languages.indexOf(lang) &#x3e; -1 &#x26;&#x26; (country === undefined || _ISO2.default.countries.indexOf(country) &#x3e; -1)) {
+      if (_ISO2.default.languages.indexOf(lang) &gt; -1 &amp;&amp; (country === undefined || _ISO2.default.countries.indexOf(country) &gt; -1)) {
         return;
       }
 
@@ -2203,11 +2196,11 @@ attributes);
       var attributes = node.attributes;
 
       // Check onmouseover / onfocus pairing.
-      var onMouseOver = (0, _jsxAstUtils.getProp)(attributes, &#x27;onMouseOver&#x27;);
+      var onMouseOver = (0, _jsxAstUtils.getProp)(attributes, 'onMouseOver');
       var onMouseOverValue = (0, _jsxAstUtils.getPropValue)(onMouseOver);
 
-      if (onMouseOver &#x26;&#x26; (onMouseOverValue !== null || onMouseOverValue !== undefined)) {
-        var hasOnFocus = (0, _jsxAstUtils.getProp)(attributes, &#x27;onFocus&#x27;);
+      if (onMouseOver &amp;&amp; (onMouseOverValue !== null || onMouseOverValue !== undefined)) {
+        var hasOnFocus = (0, _jsxAstUtils.getProp)(attributes, 'onFocus');
         var onFocusValue = (0, _jsxAstUtils.getPropValue)(hasOnFocus);
 
         if (hasOnFocus === false || onFocusValue === null || onFocusValue === undefined) {
@@ -2219,10 +2212,10 @@ attributes);
       }
 
       // Checkout onmouseout / onblur pairing
-      var onMouseOut = (0, _jsxAstUtils.getProp)(attributes, &#x27;onMouseOut&#x27;);
+      var onMouseOut = (0, _jsxAstUtils.getProp)(attributes, 'onMouseOut');
       var onMouseOutValue = (0, _jsxAstUtils.getPropValue)(onMouseOut);
-      if (onMouseOut &#x26;&#x26; (onMouseOutValue !== null || onMouseOutValue !== undefined)) {
-        var hasOnBlur = (0, _jsxAstUtils.getProp)(attributes, &#x27;onBlur&#x27;);
+      if (onMouseOut &amp;&amp; (onMouseOutValue !== null || onMouseOutValue !== undefined)) {
+        var hasOnBlur = (0, _jsxAstUtils.getProp)(attributes, 'onBlur');
         var onBlurValue = (0, _jsxAstUtils.getPropValue)(hasOnBlur);
 
         if (hasOnBlur === false || onBlurValue === null || onBlurValue === undefined) {
@@ -2257,10 +2250,10 @@ attributes);
     <li>description and source-code<pre class="apidocCodePre">function create(context) {
   return {
     JSXOpeningElement: function JSXOpeningElement(node) {
-      var accessKey = (0, _jsxAstUtils.getProp)(node.attributes, &#x27;accesskey&#x27;);
+      var accessKey = (0, _jsxAstUtils.getProp)(node.attributes, 'accesskey');
       var accessKeyValue = (0, _jsxAstUtils.getPropValue)(accessKey);
 
-      if (accessKey &#x26;&#x26; accessKeyValue) {
+      if (accessKey &amp;&amp; accessKeyValue) {
         context.report({
           node: node,
           message: errorMessage
@@ -2291,8 +2284,8 @@ attributes);
     <li>description and source-code<pre class="apidocCodePre">function create(context) {
   return {
     JSXAttribute: function JSXAttribute(attribute) {
-      // Don&#x27;t normalize, since React only recognizes autoFocus on low-level DOM elements.
-      if ((0, _jsxAstUtils.propName)(attribute) === &#x27;autoFocus&#x27;) {
+      // Don't normalize, since React only recognizes autoFocus on low-level DOM elements.
+      if ((0, _jsxAstUtils.propName)(attribute) === 'autoFocus') {
         context.report({
           node: attribute,
           message: errorMessage
@@ -2367,10 +2360,10 @@ attributes);
         return;
       }
 
-      var onChange = (0, _jsxAstUtils.getProp)(node.attributes, &#x27;onChange&#x27;);
-      var hasOnBlur = (0, _jsxAstUtils.getProp)(node.attributes, &#x27;onBlur&#x27;) !== undefined;
+      var onChange = (0, _jsxAstUtils.getProp)(node.attributes, 'onChange');
+      var hasOnBlur = (0, _jsxAstUtils.getProp)(node.attributes, 'onBlur') !== undefined;
 
-      if (onChange &#x26;&#x26; !hasOnBlur) {
+      if (onChange &amp;&amp; !hasOnBlur) {
         context.report({
           node: node,
           message: errorMessage
@@ -2404,14 +2397,14 @@ attributes);
       var type = (0, _jsxAstUtils.elementType)(node);
       var implicitRole = (0, _getImplicitRole2.default)(type, node.attributes);
 
-      if (implicitRole === &#x27;&#x27;) {
+      if (implicitRole === '') {
         return;
       }
 
-      var role = (0, _jsxAstUtils.getProp)(node.attributes, &#x27;role&#x27;);
+      var role = (0, _jsxAstUtils.getProp)(node.attributes, 'role');
       var roleValue = (0, _jsxAstUtils.getLiteralPropValue)(role);
 
-      if (typeof roleValue === &#x27;string&#x27; &#x26;&#x26; roleValue.toUpperCase() === implicitRole.toUpperCase()) {
+      if (typeof roleValue === 'string' &amp;&amp; roleValue.toUpperCase() === implicitRole.toUpperCase()) {
         context.report({
           node: node,
           message: errorMessage(type, implicitRole.toLowerCase())
@@ -2445,7 +2438,7 @@ attributes);
       var props = node.attributes;
       var type = (0, _jsxAstUtils.elementType)(node);
 
-      var interactiveProps = [&#x27;onclick&#x27;, &#x27;ondblclick&#x27;, &#x27;onkeydown&#x27;, &#x27;onkeyup&#x27;, &#x27;onkeypress&#x27;];
+      var interactiveProps = ['onclick', 'ondblclick', 'onkeydown', 'onkeyup', 'onkeypress'];
 
       if ((0, _isHiddenFromScreenReader2.default)(type, props)) {
         return;
@@ -2487,7 +2480,7 @@ attributes);
     JSXOpeningElement: function JSXOpeningElement(node) {
       var attributes = node.attributes;
 
-      if ((0, _jsxAstUtils.getProp)(attributes, &#x27;onClick&#x27;) === undefined) {
+      if ((0, _jsxAstUtils.getProp)(attributes, 'onClick') === undefined) {
         return;
       }
 
@@ -2504,7 +2497,7 @@ attributes);
         // of presentation to the element to indicate that it is not meant to
         // be interactive.
         return;
-      } else if ((0, _getTabIndex2.default)((0, _jsxAstUtils.getProp)(attributes, &#x27;tabIndex&#x27;)) !== undefined) {
+      } else if ((0, _getTabIndex2.default)((0, _jsxAstUtils.getProp)(attributes, 'tabIndex')) !== undefined) {
         return;
       }
 
@@ -2538,7 +2531,7 @@ attributes);
   return {
     JSXOpeningElement: function JSXOpeningElement(node) {
       var attributes = node.attributes;
-      if ((0, _jsxAstUtils.getProp)(attributes, &#x27;onclick&#x27;) === undefined) {
+      if ((0, _jsxAstUtils.getProp)(attributes, 'onclick') === undefined) {
         return;
       }
 
@@ -2548,7 +2541,7 @@ attributes);
         return;
       } else if ((0, _isInteractiveElement2.default)(type, attributes)) {
         return;
-      } else if ((0, _jsxAstUtils.getPropValue)((0, _jsxAstUtils.getProp)(attributes, &#x27;role&#x27;))) {
+      } else if ((0, _jsxAstUtils.getPropValue)((0, _jsxAstUtils.getProp)(attributes, 'role'))) {
         return;
       }
 
@@ -2583,9 +2576,9 @@ attributes);
   return {
     JSXAttribute: function JSXAttribute(attribute) {
       var name = (0, _jsxAstUtils.propName)(attribute);
-      var normalizedName = name ? name.toUpperCase() : &#x27;&#x27;;
+      var normalizedName = name ? name.toUpperCase() : '';
 
-      if (normalizedName !== &#x27;ROLE&#x27;) {
+      if (normalizedName !== 'ROLE') {
         return;
       }
 
@@ -2593,21 +2586,21 @@ attributes);
 
       // If value is undefined, then the role attribute will be dropped in the DOM.
       // If value is null, then getLiteralAttributeValue is telling us
-      // that the value isn&#x27;t in the form of a literal.
+      // that the value isn't in the form of a literal.
       if (value === undefined || value === null) {
         return;
       }
 
-      var normalizedValues = String(value).toLowerCase().split(&#x27; &#x27;);
+      var normalizedValues = String(value).toLowerCase().split(' ');
       var validRoles = normalizedValues.filter(function (val) {
-        return [].concat(_toConsumableArray(_ariaQuery.roles.keys())).indexOf(val) &#x3e; -1;
+        return [].concat(_toConsumableArray(_ariaQuery.roles.keys())).indexOf(val) &gt; -1;
       });
 
       validRoles.forEach(function (role) {
         var _roles$get = _ariaQuery.roles.get(role),
             requiredProps = _roles$get.requiredProps;
 
-        if (requiredProps.length &#x3e; 0) {
+        if (requiredProps.length &gt; 0) {
           var hasRequiredProps = requiredProps.every(function (prop) {
             return (0, _jsxAstUtils.getProp)(attribute.parent.attributes, prop);
           });
@@ -2647,14 +2640,14 @@ attributes);
     JSXOpeningElement: function JSXOpeningElement(node) {
       // If role is not explicitly defined, then try and get its implicit role.
       var type = (0, _jsxAstUtils.elementType)(node);
-      var role = (0, _jsxAstUtils.getProp)(node.attributes, &#x27;role&#x27;);
+      var role = (0, _jsxAstUtils.getProp)(node.attributes, 'role');
       var roleValue = role ? (0, _jsxAstUtils.getLiteralPropValue)(role) : (0, _getImplicitRole2.default)(type, node.attributes);
-      var isImplicit = roleValue &#x26;&#x26; role === undefined;
+      var isImplicit = roleValue &amp;&amp; role === undefined;
 
       // If there is no explicit or implicit role, then assume that the element
       // can handle the global set of aria-* properties.
-      // This actually isn&#x27;t true - should fix in future release.
-      if (typeof roleValue !== &#x27;string&#x27; || _ariaQuery.roles.get(roleValue.toLowerCase()) === undefined) {
+      // This actually isn't true - should fix in future release.
+      if (typeof roleValue !== 'string' || _ariaQuery.roles.get(roleValue.toLowerCase()) === undefined) {
         return;
       }
 
@@ -2667,14 +2660,14 @@ attributes);
       });
 
       node.attributes.forEach(function (prop) {
-        if (prop.type === &#x27;JSXSpreadAttribute&#x27;) {
+        if (prop.type === 'JSXSpreadAttribute') {
           return;
         }
 
         var name = (0, _jsxAstUtils.propName)(prop);
-        var normalizedName = name ? name.toLowerCase() : &#x27;&#x27;;
+        var normalizedName = name ? name.toLowerCase() : '';
 
-        if (invalidAriaPropsForRole.indexOf(normalizedName) &#x3e; -1) {
+        if (invalidAriaPropsForRole.indexOf(normalizedName) &gt; -1) {
           context.report({
             node: node,
             message: errorMessage(name, roleValue, type, isImplicit)
@@ -2704,10 +2697,10 @@ attributes);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function enumArraySchema() {
-  var enumeratedList = arguments.length &#x3e; 0 &#x26;&#x26; arguments[0] !== undefined ? arguments[0] : [];
+  var enumeratedList = arguments.length &gt; 0 &amp;&amp; arguments[0] !== undefined ? arguments[0] : [];
   return (0, _objectAssign2.default)({}, arraySchema, {
     items: {
-      type: &#x27;string&#x27;,
+      type: 'string',
       enum: enumeratedList
     }
   });
@@ -2725,9 +2718,9 @@ attributes);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function generateObjSchema() {
-  var properties = arguments.length &#x3e; 0 &#x26;&#x26; arguments[0] !== undefined ? arguments[0] : {};
+  var properties = arguments.length &gt; 0 &amp;&amp; arguments[0] !== undefined ? arguments[0] : {};
   return {
-    type: &#x27;object&#x27;,
+    type: 'object',
     properties: properties
   };
 }</pre></li>
@@ -2754,7 +2747,7 @@ attributes);
   return {
     JSXAttribute: function JSXAttribute(node) {
       var name = (0, _jsxAstUtils.propName)(node);
-      if (name &#x26;&#x26; name.toUpperCase() !== &#x27;SCOPE&#x27;) {
+      if (name &amp;&amp; name.toUpperCase() !== 'SCOPE') {
         return;
       }
 
@@ -2766,7 +2759,7 @@ attributes);
       // low-level DOM element this maps to.
       if ([].concat(_toConsumableArray(_ariaQuery.dom.keys())).indexOf(tagName) === -1) {
         return;
-      } else if (tagName &#x26;&#x26; tagName.toUpperCase() === &#x27;TH&#x27;) {
+      } else if (tagName &amp;&amp; tagName.toUpperCase() === 'TH') {
         return;
       }
 
@@ -2800,17 +2793,17 @@ attributes);
   return {
     JSXAttribute: function JSXAttribute(attribute) {
       var name = (0, _jsxAstUtils.propName)(attribute);
-      var normalizedName = name ? name.toUpperCase() : &#x27;&#x27;;
+      var normalizedName = name ? name.toUpperCase() : '';
 
       // Check if tabIndex is the attribute
-      if (normalizedName !== &#x27;TABINDEX&#x27;) {
+      if (normalizedName !== 'TABINDEX') {
         return;
       }
 
-      // Only check literals because we can&#x27;t infer values from certain expressions.
+      // Only check literals because we can't infer values from certain expressions.
       var value = Number((0, _jsxAstUtils.getLiteralPropValue)(attribute));
 
-      if (isNaN(value) || value &#x3c;= 0) {
+      if (isNaN(value) || value &lt;= 0) {
         return;
       }
 
@@ -2835,3 +2828,4 @@ attributes);
     ]
 </div>
 </div>
+</body></html>
